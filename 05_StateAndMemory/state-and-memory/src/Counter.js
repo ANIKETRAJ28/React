@@ -23,7 +23,7 @@ function Counter() {
 
 
             <input type='text' placeholder='todos...' onChange={ (event) => setNewTodo(event.target.value)}/><br/>
-            <button onClick={() => setTodos([...todos, newTodo])} >Add</button><br/>
+            <button onClick={() => setTodos([...todos, newTodo])}>Add</button><br/>
             <TodoList todos = {todos}/>
         </div>
     )
