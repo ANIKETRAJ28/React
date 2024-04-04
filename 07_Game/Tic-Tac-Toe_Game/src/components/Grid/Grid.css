@@ -7,6 +7,19 @@
     flex-wrap: wrap;
 }
 
+.reset {
+    padding: 1rem;
+    color: white;
+    background-color: var(--resetGreen);
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+}
+
+.grid-wrapper {
+    max-width: 500px;
+}
+
 .turn-highlight {
     color: white;
 }
