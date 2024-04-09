@@ -18,8 +18,7 @@ function Tweet({ content, likeCount, date, onEdit, id }) {
                                         likeCount: likeCount,
                                     })
                                 }}
-                            /> 
-                        : content
+                            /> : content
                     }
                 </div>
                 <button className='btn' onClick={() => setIsEditing(!isEditing)}>
