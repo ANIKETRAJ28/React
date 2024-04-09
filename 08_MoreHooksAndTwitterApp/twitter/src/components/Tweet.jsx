@@ -1,13 +1,25 @@
 import { useState } from 'react';
 import '../CSS/Tweet.css'
-function Tweet({ content, likeCount, date }) {
+function Tweet({ content, likeCount, date, onEdit, id }) {
     const [isEditing, setIsEditing] = useState(false);
     return(
         <div className='tweet-wrapper'>
             <div className='tweet'>
                 <div className="tweet-content">
                     {
-                        (isEditing) ? <input value={content} /> : content
+                        (isEditing) ? 
+                            <input type='text' 
+                                value={content} 
+                                onChange={(e) => {
+                                    onEdit({
+                                        id: id,
+                                        content: e.target.value,
+                                        date: date,
+                                        likeCount: likeCount,
+                                    })
+                                }}
+                            /> 
+                        : content
                     }
                 </div>
                 <button className='btn' onClick={() => setIsEditing(!isEditing)}>

@@ -9,20 +9,38 @@ const initialDummyTweets = [
 ];
 
 function Twitter() {
-    const [tweet, setTweet] = useState(initialDummyTweets);
+    const [tweets, setTweets] = useState(initialDummyTweets);
     const handleAddTweet = (text) => {
-        let nextId = (tweet.length > 0) ? tweet[tweet.length-1].id+1 : 0;
-        setTweet([...tweet, {
+        let nextId = (tweets.length > 0) ? tweets[tweets.length-1].id+1 : 0;
+        setTweets([...tweets, {
             content: text,
             likeCount: Math.floor(Math.random()*50),
             id: nextId,
             date: new Date()
         }]);
     }
+    const handleEditTweet = (tweet) => {
+        setTweets(
+            tweets.map((editedTweet) => {
+                if(editedTweet.id === tweet.id) {
+                    return tweet;
+                } else {
+                    return editedTweet;
+                }
+            })
+        )
+    }
+    const sortTweets = () => {
+        tweets.sort((t1, t2) => {return t2.date.getTime() - t1.date.getTime()});
+        setTweets([...tweets]);
+    }
     return (
         <>
             <AddTweet onAddTweet={handleAddTweet}/>
-          <TweetList tweets={tweet}/>
+            <button onClick={sortTweets}>
+                Sort Tweet by recent Added
+            </button>
+            <TweetList tweets={tweets} onEditTweet={handleEditTweet}/>
         </>
     );
 }
