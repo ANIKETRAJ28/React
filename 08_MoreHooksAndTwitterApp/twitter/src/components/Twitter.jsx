@@ -20,7 +20,7 @@ function Twitter() {
             id: nextId,
             date: new Date()
         }]);
-    }, [tweets]);
+    }, []);
     const handleEditTweet = useCallback((tweet) => {
         setTweets(
             tweets.map((editedTweet) => {
@@ -31,7 +31,7 @@ function Twitter() {
                 }
             })
         )
-    },[tweets]);
+    },[]);
     const sortTweets = useCallback(() => {
         tweets.sort((t1, t2) => {return t2.date.getTime() - t1.date.getTime()});
         setTweets([...tweets]);
